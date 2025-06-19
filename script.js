@@ -532,10 +532,10 @@ function renderEnhancedAlternativeMatrices() {
         const n = alternatives.length;
         let html = `
             <div class="flex items-center justify-between mb-4">
-                <h4 class="text-lg font-display font-bold text-blue-900 flex items-center">
+                <h3 class="text-xl font-display font-bold text-blue-900 flex items-center">
                     <i class="fas fa-table text-accent-blue mr-3"></i>
                     Matriks Perbandingan: ${criterion}
-                </h4>                <div class="flex space-x-2">
+                </h3>                <div class="flex space-x-2">
                 <label for="uploadAltExcel-${criterion}" class="luxury-button-sm bg-accent-green cursor-pointer">
                 <i class="fas fa-file-excel mr-1"></i>
                 Upload From Excel
