@@ -1291,7 +1291,157 @@ input[type="number"][data-criterion]:focus {
     transform: scale(1.1);
 }
 
-/* New responsive class for section titles */
+/* --- Custom Font Size Enhancements --- */
+
+/* Studi Kasus Heading */
+.luxury-card h2 {
+    font-size: 2.4rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    .luxury-card h2 {
+        font-size: 3.2rem; /* Larger for desktop */
+    }
+}
+
+/* Studi Kasus Paragraph */
+.luxury-card p.text-primary-light {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    .luxury-card p.text-primary-light {
+        font-size: 2rem; /* Larger for desktop */
+    }
+}
+
+/* Manajemen Kriteria & Alternatif Headings */
+.luxury-card h3 {
+    font-size: 2.4rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    .luxury-card h3 {
+        font-size: 3rem; /* Larger for desktop */
+    }
+}
+
+/* Labels for Criteria & Alternatives */
+label.block.text-sm.font-medium.text-primary-light {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    label.block.text-sm.font-medium.text-primary-light {
+        font-size: 2rem; /* Larger for desktop */
+    }
+}
+
+/* Criteria and Alternatives List Items */
+#criteriaList div,
+#alternativesList div {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    #criteriaList div,
+    #alternativesList div {
+        font-size: 2rem; /* Larger for desktop */
+    }
+}
+
+
+/* Input fields in Management sections */
+input.luxury-input {
+    font-size: 1.8rem !important; /* Larger input font */
+}
+@media (min-width: 768px) {
+    input.luxury-input {
+        font-size: 2rem !important; /* Even larger for desktop */
+    }
+}
+
+/* Skala Perbandingan AHP text */
+.luxury-card .space-y-4 > div {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    .luxury-card .space-y-4 > div {
+        font-size: 2rem; /* Larger for desktop */
+    }
+}
+
+/* Skala Perbandingan AHP H4 */
+.luxury-card h4.font-semibold.text-accent-blue {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    .luxury-card h4.font-semibold.text-accent-blue {
+        font-size: 2.2rem; /* Larger for desktop */
+    }
+}
+
+/* Table Headers (th) */
+.luxury-table th, .matrix-table th {
+    font-size: 1.8rem !important; /* Larger table header font */
+}
+@media (min-width: 768px) {
+    .luxury-table th, .matrix-table th {
+        font-size: 2rem !important; /* Even larger for desktop */
+    }
+}
+
+/* Table Data Cells (td) */
+.luxury-table td, .matrix-table td {
+    font-size: 1.8rem !important; /* Larger table cell font */
+}
+@media (min-width: 768px) {
+    .luxury-table td, .matrix-table td {
+        font-size: 2rem !important; /* Even larger for desktop */
+    }
+}
+
+/* Matrix Input Cells */
+.matrix-input {
+    font-size: 1.8rem !important; /* Larger input font in matrix */
+}
+@media (max-width: 480px) {
+    .matrix-input {
+        font-size: 1.6rem !important; /* Slightly smaller for very small screens */
+    }
+}
+@media (min-width: 768px) {
+    .matrix-input {
+        font-size: 2rem !important; /* Even larger for desktop */
+    }
+}
+
+/* Consistency Results Text */
+#consistencyResults div {
+    font-size: 1.8rem; /* Base for mobile */
+}
+@media (min-width: 768px) {
+    #consistencyResults div {
+        font-size: 2rem; /* Larger for desktop */
+    }
+}
+
+/* Consistency Indicators */
+.consistency-good, .consistency-warning {
+    font-size: 1.8rem !important; /* Larger font for consistency messages */
+    padding: 0.8rem 1.5rem; /* Adjust padding for larger text */
+}
+@media (min-width: 768px) {
+    .consistency-good, .consistency-warning {
+        font-size: 2rem !important; /* Even larger for desktop */
+    }
+}
+
+/* Footer text */
+.luxury-footer p {
+    font-size: 1.6rem; /* Slightly larger footer font */
+}
+@media (min-width: 768px) {
+    .luxury-footer p {
+        font-size: 1.8rem; /* Even larger for desktop */
+    }
+}
+/* New responsive class for section titles - Ensure this is still at the bottom or higher specificity */
 .luxury-section-title {
     font-size: 2.4rem; /* Default font size for mobile (24px) */
     font-weight: 700;
@@ -1305,3 +1455,4 @@ input[type="number"][data-criterion]:focus {
         font-size: 3.2rem; /* Larger font size for desktop (32px) */
     }
 }
+
