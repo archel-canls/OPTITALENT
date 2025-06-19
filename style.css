@@ -1,3 +1,4 @@
+
 /* Modern Luxury CSS Framework for AHP Decision Support System - Gemini Inspired */
 
 /* Font Imports */
@@ -157,6 +158,49 @@ body {
 .luxury-header .text-primary-light,
 .luxury-header .text-white {
     color: white !important; /* Ensure all header text is white */
+}
+/* Logo Styling */
+.header-logo {
+    height: 5rem; /* Tinggi default logo untuk layar kecil (misal: 50px) */
+    width: auto; /* Pertahankan rasio aspek gambar */
+    object-fit: contain; /* Pastikan gambar pas tanpa terpotong */
+    transition: all 0.3s ease; /* Transisi halus untuk responsivitas */
+}
+
+@media (min-width: 768px) {
+    .header-logo {
+        height: 7rem; /* Tinggi logo lebih besar untuk desktop (misal: 70px) */
+        margin-right: 2rem; /* Tambah sedikit jarak di desktop */
+    }
+}
+
+/* Header Specific Adjustments for Left Alignment */
+/* Target elemen yang membungkus logo dan teks judul di dalam header */
+.luxury-header .container > .flex.items-center.justify-between > .flex.items-center {
+    justify-content: flex-start; /* Pastikan konten logo dan judul rata kiri */
+    width: auto; /* Sesuaikan lebar secara otomatis */
+}
+
+
+/* Memastikan teks judul dan sub-judul di header rata kiri */
+.luxury-header h1,
+.luxury-header p {
+    color: white !important; /* Tetap putih */
+    text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: left !important; /* Paksa rata kiri untuk h1 dan p di header */
+}
+
+/* Penyesuaian padding kontainer header agar konten tidak terlalu menempel tepi */
+.luxury-header .container {
+    padding-left: 2rem; /* Padding kiri untuk konten header */
+    padding-right: 2rem; /* Padding kanan untuk konten header */
+}
+
+@media (min-width: 768px) {
+    .luxury-header .container {
+        padding-left: 3rem; /* Padding lebih besar di desktop */
+        padding-right: 3rem;
+    }
 }
 
 /* Mobile Menu */
@@ -1322,7 +1366,21 @@ input[type="number"][data-criterion]:focus {
         font-size: 3rem; /* Larger for desktop */
     }
 }
+/* Styling for H4 titles within the alternative matrix cards */
+.alternative-matrix-card h4 {
+    /* The 'text-lg' class from Tailwind makes it 1.125rem by default.
+       Let's override it to make it significantly larger. */
+    font-size: 2rem; /* Ukuran font yang lebih besar untuk judul H4 matriks alternatif */
+    font-weight: 800; /* Pastikan tebal dan menonjol */
+    line-height: 1.3; /* Sesuaikan line-height agar tidak terlalu rapat jika teks panjang */
+}
 
+/* Optional: Untuk layar yang lebih besar, bisa lebih besar lagi */
+@media (min-width: 768px) {
+    .alternative-matrix-card h4 {
+        font-size: 3rem; /* Ukuran font yang lebih besar untuk desktop */
+    }
+}
 /* Labels for Criteria & Alternatives */
 label.block.text-sm.font-medium.text-primary-light {
     font-size: 1.8rem; /* Base for mobile */
@@ -1332,6 +1390,8 @@ label.block.text-sm.font-medium.text-primary-light {
         font-size: 2rem; /* Larger for desktop */
     }
 }
+/* Styling for H4 titles within the alternative matrix cards */
+
 
 /* Criteria and Alternatives List Items */
 #criteriaList div,
