@@ -538,7 +538,7 @@ function renderEnhancedAlternativeMatrices() {
                 </h4>                <div class="flex space-x-2">
                 <label for="uploadAltExcel-${criterion}" class="luxury-button-sm bg-accent-green cursor-pointer">
                 <i class="fas fa-file-excel mr-1"></i>
-                Upload From Excel
+                Import From Excel
                 <input type="file" id="uploadAltExcel-${criterion}" class="hidden" accept=".xls,.xlsx" onchange="handleExcelUpload(event, '${criterion}')">
             </label>
                 </div>            </div>
@@ -823,7 +823,7 @@ function exportResultsToExcel() {
         XLSX.utils.book_append_sheet(wb, wsScores, "Skor & Ranking");
 
         // --- Simpan File Excel ---
-        XLSX.writeFile(wb, "Hasil_AHP_DSS.xlsx");
+        XLSX.writeFile(wb, "Hasil_Perhitungan_(Judul).xlsx");
         showMessage('✅ Data berhasil diekspor ke Excel!', 'success');
 
     } catch (error) {
@@ -831,6 +831,54 @@ function exportResultsToExcel() {
         showMessage('Terjadi kesalahan saat mengekspor data: ' + error.message, 'error');
     }
 }
+function triggerFullMatrixImport() {
+    document.getElementById('fullMatrixImportInput').click();
+}
+
+document.getElementById('fullMatrixImportInput').addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (!file) {
+        showMessage('❌ Tidak ada file yang dipilih.', 'info');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = new Uint8Array(e.target.result);
+            const workbook = XLSX.read(data, { type: 'array' });
+
+            // === Import Matriks Kriteria ===
+            const criteriaSheet = workbook.Sheets["Kriteria & Bobot"];
+            if (!criteriaSheet) {
+                showMessage('❌ Sheet "Kriteria & Bobot" tidak ditemukan dalam file.', 'error');
+                return;
+            }
+            const criteriaData = XLSX.utils.sheet_to_json(criteriaSheet, { header: 1 });
+            populateMatrixFromExcel(criteriaData, 'criteria');
+
+            // === Import Semua Matriks Alternatif berdasarkan kriteria ===
+            criteria.forEach(criterion => {
+                const sheetName = `Alt - ${criterion.substring(0, 20)}`;
+                const altSheet = workbook.Sheets[sheetName];
+                if (!altSheet) {
+                    console.warn(`❗ Sheet '${sheetName}' tidak ditemukan, dilewati.`);
+                    return;
+                }
+                const altData = XLSX.utils.sheet_to_json(altSheet, { header: 1 });
+                populateMatrixFromExcel(altData, criterion);
+            });
+
+            showMessage('✅ Semua matriks berhasil diimpor dari file Excel!', 'success');
+        } catch (err) {
+            console.error('❌ Gagal mengimpor:', err);
+            showMessage('Gagal membaca file Excel. Pastikan formatnya sesuai hasil ekspor.', 'error');
+        }
+    };
+
+    reader.readAsArrayBuffer(file);
+});
+
 /**
  * Mengumpulkan data matriks kriteria dari input UI.
  * Mengembalikan matriks (array 2D) yang siap untuk diisi ke AHP Calculator.

@@ -95,16 +95,24 @@
                     <div><span class="font-bold text-black">8</span> : <span class="text-primary-light">Hampir luar biasa</span></div>
                     <div><span class="font-bold text-black">9</span> : <span class="text-primary-light">Mutlak terbaik</span></div>
                 </div>
-                <h4 class="font-semibold text-accent-blue mb-2">Klik Tombol Dibawah Untuk Memuat Data dari Jurnal:</h4>
+                <p>Klik Tombol Dibawah Untuk Memuat Data dari Jurnal:</p>
                 <button onclick="loadDefaultData()" class="luxury-button">
                     <i class="fas fa-download mr-2"></i>
                     Muat Data Default
                 </button><br>
-                <h4 class="font-semibold text-accent-blue mb-2">Atau Anda Bisa Mengisinya Secara Manual Maupun Upload Data Dari Excel(Dengan ketentuan Matriks Identitasnya dimulai dari B3,C4,D5,Dst) Melalui Matriks Berikut Ini:</h4>
+                <p>Atau Import Semua Matriks Dari Excel:</p>
+                <button class="luxury-button bg-accent-green" onclick="triggerFullMatrixImport()">
+                    <i class="fas fa-file-import mr-2"></i> Import All Matrix From Excel
+                </button>
+                <p>Belum Punya Format Excelnya? Klik Tombol Berikut Untuk Download</p>
+                <button id="exportExcelBtn" class="luxury-button bg-accent-green" onclick="exportResultsToExcel()">
+                    <i class="fas fa-file-excel mr-2"></i> Download Format Excel
+                </button>
             </div>
         </div>
     </div><br>
-
+    <input type="file" id="fullMatrixImportInput" accept=".xlsx,.xls" style="display: none;" />
+    
         <div id="matrixSection" class="luxury-card mb-8">
            
             <div class="flex items-center justify-between mb-6">
@@ -114,7 +122,7 @@
                 </h3>
                 <label for="uploadCriteriaExcel" class="luxury-button-sm bg-accent-green cursor-pointer">
                     <i class="fas fa-file-excel mr-1"></i>
-                    Upload From Excel (Kriteria)
+                    Import From Excel (Kriteria)
                     <input type="file" id="uploadCriteriaExcel" class="hidden" accept=".xls,.xlsx" onchange="handleExcelUpload(event, 'criteria')">
                 </label>
             </div>
