@@ -624,11 +624,6 @@ function addMatrixHelper(matrixType) {
         <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-4">
                 <div class="flex items-center space-x-4">
-                <button onclick="checkConsistencyPreview('criteria')" 
-                        class="luxury-button-primary text-lg px-4 py-4">
-                    <i class="fas fa-check-circle mr-1"></i>
-                    Preview Konsistensi
-                </button>
             </div>
             <div id="matrix-status" class="text-sm text-primary-light"></div>
         </div>

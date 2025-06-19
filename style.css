@@ -1516,3 +1516,124 @@ input.luxury-input {
     }
 }
 
+/* Consistency Indicator Containers */
+/* Overrides default Tailwind bg-green-50/red-50 and border-green-200/red-200 */
+.p-4.rounded-lg.border { /* Targeting the main wrapper div */
+    background: var(--bg-secondary) !important; /* Use a light background from your theme */
+    border: 1px solid var(--glass-border) !important; /* Use a light border */
+    border-radius: var(--radius-md) !important; /* Consistent border radius */
+    box-shadow: var(--shadow-sm); /* Subtle shadow for depth */
+    margin-bottom: var(--space-md); /* Add some space between consistency blocks */
+    transition: all 0.3s ease; /* Smooth transition on hover/state change */
+}
+
+/* Specific border colors for status (Good/Warning/Error) */
+.p-4.rounded-lg.border.bg-green-50.border-green-200 { /* For consistent (green) status */
+    background: rgba(52, 168, 83, 0.08) !important; /* Lighter green tint */
+    border-color: var(--gemini-green) !important; /* Stronger green border */
+}
+
+.p-4.rounded-lg.border.bg-red-50.border-red-200 { /* For inconsistent (red) status */
+    background: rgba(234, 67, 53, 0.08) !important; /* Lighter red tint */
+    border-color: var(--gemini-red) !important; /* Stronger red border */
+}
+
+/* Consistency Title (h4) */
+.p-4.rounded-lg.border h4 {
+    font-family: 'Outfit', sans-serif; /* Use your display font for titles */
+    font-weight: 700 !important; /* Ensure it's bold */
+    font-size: 1.8rem; /* Make title text larger */
+    margin-bottom: var(--space-sm) !important; /* Adjust spacing */
+    display: flex; /* Use flex for icon alignment */
+    align-items: center; /* Vertically align icon and text */
+}
+
+/* Icon in Consistency Title */
+.p-4.rounded-lg.border h4 .fas {
+    font-size: 2rem; /* Larger icon size */
+    margin-right: 0.8rem; /* Space between icon and text */
+}
+
+/* Consistency Title Text Color based on status */
+.p-4.rounded-lg.border h4.text-green-800 {
+    color: var(--gemini-green) !important; /* Use green from your palette */
+}
+
+.p-4.rounded-lg.border h4.text-red-800 {
+    color: var(--gemini-red) !important; /* Use red from your palette */
+}
+
+/* Consistency Details (Lambda Max, CI, RI, CR) */
+.p-4.rounded-lg.border .grid.gap-4.text-sm {
+    font-size: 1.6rem; /* Increase overall text size for details */
+    color: var(--text-secondary); /* Default text color for details */
+    line-height: 1.5; /* Improve readability */
+}
+
+.p-4.rounded-lg.border .grid > div > span.font-medium {
+    color: var(--text-primary); /* Make labels slightly darker */
+    font-weight: 600 !important; /* Ensure labels are clearly visible */
+    display: block; /* Make span a block to push value below it */
+    margin-bottom: 0.2rem; /* Small space between label and value */
+}
+
+/* CR Value Specific Styling */
+.p-4.rounded-lg.border .font-bold.text-green-600 {
+    color: var(--gemini-green) !important; /* Stronger green for good CR */
+    font-size: 1.8rem; /* Make CR value larger */
+}
+
+.p-4.rounded-lg.border .font-bold.text-red-600 {
+    color: var(--gemini-red) !important; /* Stronger red for bad CR */
+    font-size: 1.8rem; /* Make CR value larger */
+}
+
+/* Consistency Message at the bottom */
+.p-4.rounded-lg.border .mt-2.text-sm {
+    font-size: 1.6rem; /* Increase text size for the message */
+    margin-top: var(--space-sm) !important; /* Adjust top margin */
+    padding-top: var(--space-sm); /* Add padding for visual separation */
+    border-top: 1px dashed var(--glass-border); /* Dashed line for subtle separation */
+}
+
+.p-4.rounded-lg.border .mt-2.text-sm.text-green-700 {
+    color: var(--gemini-green) !important;
+}
+
+.p-4.rounded-lg.border .mt-2.text-sm.text-red-700 {
+    color: var(--gemini-red) !important;
+}
+
+/* --- Responsiveness for the Grid Layout --- */
+@media (max-width: 767px) { /* Adjust grid for smaller screens if needed */
+    .p-4.rounded-lg.border .grid {
+        grid-template-columns: 1fr 1fr; /* 2 columns on small screens */
+        gap: var(--space-sm); /* Smaller gap */
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) { /* Medium screens */
+    .p-4.rounded-lg.border .grid {
+        grid-template-columns: repeat(4, 1fr); /* Keep 4 columns on medium screens */
+        gap: var(--space-md);
+    }
+}
+
+@media (min-width: 1024px) { /* Large screens */
+    .p-4.rounded-lg.border .grid {
+        gap: var(--space-lg); /* Larger gap on large screens */
+    }
+    .p-4.rounded-lg.border h4 {
+        font-size: 2.2rem; /* Even larger title on large screens */
+    }
+    .p-4.rounded-lg.border .grid.gap-4.text-sm {
+        font-size: 1.8rem; /* Larger detail text on large screens */
+    }
+    .p-4.rounded-lg.border .font-bold.text-green-600,
+    .p-4.rounded-lg.border .font-bold.text-red-600 {
+        font-size: 2rem; /* Larger CR value on large screens */
+    }
+    .p-4.rounded-lg.border .mt-2.text-sm {
+        font-size: 1.8rem; /* Larger message text on large screens */
+    }
+}
