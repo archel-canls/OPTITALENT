@@ -532,10 +532,10 @@ function renderEnhancedAlternativeMatrices() {
         const n = alternatives.length;
         let html = `
             <div class="flex items-center justify-between mb-4">
-                 <h3 class="text-2xl md:text-3xl font-display font-bold text-blue-900 flex items-center">
+                <h4 class="text-lg font-display font-bold text-blue-900 flex items-center">
                     <i class="fas fa-table text-accent-blue mr-3"></i>
                     Matriks Perbandingan: ${criterion}
-                </h3>                 <div class="flex space-x-2">
+                </h4>                <div class="flex space-x-2">
                 <label for="uploadAltExcel-${criterion}" class="luxury-button-sm bg-accent-green cursor-pointer">
                 <i class="fas fa-file-excel mr-1"></i>
                 Upload From Excel
@@ -621,74 +621,7 @@ function addMatrixHelper(matrixType) {
     const helper = document.createElement('div');
     helper.className = 'mt-4 p-4 luxury-card';
     helper.innerHTML = `
-  ${i}, ${j}, 'alternative')"
-                               class="matrix-input">
-                    </td>`;
-                } else {
-                    html += `<td class="p-2 calculated" id="alt-${criterion}-${i}-${j}">1</td>`;
-                }
-            }
-            html += '</tr>';
-        }
-        
-        html += '</tbody></table></div>';
-        matrixDiv.innerHTML = html;
-        container.appendChild(matrixDiv);
-        
-        addMatrixHelper(criterion);
-    });
-}
-
-function handleMatrixChange(input, i, j, matrixType) {
-    const value = parseFloat(input.value);
-    
-    if (validateMatrixInput(input, i, j, matrixType)) {
-        if (matrixType === 'criteria') {
-            updateCriteriaMatrix(i, j, value);
-        } else {
-            updateAlternativeMatrix(matrixType, i, j, value);
-        }
-        
-        // Update completeness
-        calculateMatrixCompleteness(matrixType === 'criteria' ? 'criteria' : 'alternatives');
-        
-        // Auto-save
-        debouncedSave();
-    }
-}
-
-/**
- * Add matrix helper tools
- */
-function addMatrixHelper(matrixType) {
-    const isAlternative = matrixType !== 'criteria';
-    const containerId = isAlternative ? 'alternativeMatrices' : 'criteriaMatrix';
-    const container = document.getElementById(containerId);
-    
-    if (isAlternative) {
-        // Helper already added in renderEnhancedAlternativeMatrices
-        return;
-    }
-      // Add helper tools for criteria matrix
-    const helper = document.createElement('div');
-    helper.className = 'mt-4 p-4 luxury-card';
-    helper.innerHTML = `
         <div class="flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center space-x-4">
-                <div class="flex items-center space-x-4">
-                <button onclick="checkConsistencyPreview('criteria')" 
-                        class="luxury-button-primary text-lg px-4 py-4">
-                    <i class="fas fa-check-circle mr-1"></i>
-                    Preview Konsistensi
-                </button>
-            </div>
-            <div id="matrix-status" class="text-sm text-primary-light"></div>
-        </div>
-    `;
-    
-    container.parentElement.appendChild(helper);
-}
-      <div class="flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-4">
                 <div class="flex items-center space-x-4">
                 <button onclick="checkConsistencyPreview('criteria')" 
